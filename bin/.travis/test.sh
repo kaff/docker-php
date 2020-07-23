@@ -34,7 +34,7 @@ fi
 
 if [ "$EZ_VERSION" = "" ]; then
     # pull in latest stable by default
-    EZ_VERSION="^3.0"
+    EZ_VERSION="dev-docker-add-db-version-variable"
 fi
 
 if [ "$REUSE_VOLUME" = "0" ]; then
@@ -109,6 +109,6 @@ docker-compose up -d --build --force-recreate
 echo '> Workaround for v2 test issues: Change ownership of files inside docker container'
 docker-compose exec app sh -c 'chown -R www-data:www-data /var/www'
 
-docker-compose exec --user www-data app sh -c "php /scripts/wait_for_db.php; php bin/console cache:warmup; php bin/behat -v --profile=rest --suite=fullJson --tags=~@broken"
+docker-compose exec --user www-data app sh -c "php /scripts/wait_for_db.php; php bin/console cache:warmup; php bin/behat -v --profile=core --tags=~@broken"
 
 docker-compose down -v
