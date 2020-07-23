@@ -52,6 +52,7 @@ if [ "$REUSE_VOLUME" = "0" ]; then
         printf "\nAs requested will also force update packages after create-project\n"
         docker run -ti --rm \
           -e SYMFONY_ENV \
+          -e APP_ENV \
           -e PHP_INI_ENV_memory_limit=3G \
           -v $(pwd)/volumes/ezplatform:/var/www \
           -v  $COMPOSER_HOME:/root/.composer \
@@ -63,6 +64,7 @@ if [ "$REUSE_VOLUME" = "0" ]; then
     else
         docker run -ti --rm \
           -e SYMFONY_ENV \
+          -e APP_ENV \
           -v $(pwd)/volumes/ezplatform:/var/www \
           -v  $COMPOSER_HOME:/root/.composer \
           ez_php:latest-node \
