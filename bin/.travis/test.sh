@@ -65,6 +65,7 @@ if [ "$REUSE_VOLUME" = "0" ]; then
         docker run -ti --rm \
           -e SYMFONY_ENV \
           -e APP_ENV \
+          -e PHP_INI_ENV_memory_limit=3G \
           -v $(pwd)/volumes/ezplatform:/var/www \
           -v  $COMPOSER_HOME:/root/.composer \
           ez_php:latest-node \
