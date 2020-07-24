@@ -34,7 +34,7 @@ fi
 
 if [ "$EZ_VERSION" = "" ]; then
     # pull in latest stable by default
-    EZ_VERSION="dev-docker-add-db-version-variable2"
+    EZ_VERSION="dev-docker-add-db-version-variable"
 fi
 
 if [ "$REUSE_VOLUME" = "0" ]; then
